@@ -1,6 +1,11 @@
-FROM node:carbon-alpine
-RUN MKDIR /my_sitio
-COPY index.html /my_sitio
-WORKDIR /my_sitio
-RUN npm install
-EXPOSE 3001
+FROM python:2.7.14
+
+RUN mkdir /opt/hello_word/
+WORKDIR /opt/hello_word/
+
+COPY requirements.txt .
+COPY dist/hello_world /opt/hello_word/
+
+EXPOSE 80
+
+CMD [ "./hello_world" ]
